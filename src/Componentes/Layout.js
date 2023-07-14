@@ -12,10 +12,10 @@ function Layout() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link to="/Home">Home</Nav.Link>
-                        <Nav.Link>Productos</Nav.Link>
-                        <Nav.Link>Ver los detalles de los productos</Nav.Link>
-                        <Nav.Link>Quienes somos</Nav.Link>
+                        <Nav.Link href="/Home">Home</Nav.Link>
+                        <Nav.Link to="/Productos">Productos</Nav.Link>
+                        <Nav.Link to="/DetalleProducto">Ver los detalles de los productos</Nav.Link>
+                        <Nav.Link to="/Contacto">Quienes somos</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control
