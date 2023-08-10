@@ -1,5 +1,6 @@
 import { Button, Container, Form, Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
+import { Link } from "react-router-dom";
 
 function Layout() {
     return (
@@ -12,10 +13,9 @@ function Layout() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="/Home">Home</Nav.Link>
-                        <Nav.Link to="/Productos">Productos</Nav.Link>
-                        <Nav.Link to="/DetalleProducto">Ver los detalles de los productos</Nav.Link>
-                        <Nav.Link to="/Contacto">Quienes somos</Nav.Link>
+                        <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/Productos">Productos</Nav.Link>
+                        <Nav.Link as={Link} to="/Contacto">Contacto de ayuda</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

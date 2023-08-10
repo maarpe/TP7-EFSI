@@ -1,9 +1,10 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
-import bootstrap from 'bootstrap/dist/js/bootstrap.js';
-import { useState, useEffect } from 'react';
-import { resolvePath } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 function Home() {
     const [productos, setProductos] = useState([]);
@@ -24,67 +25,42 @@ function Home() {
         return productos[rand];
     }
 
-    let productosRandom = [ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio(), ProductoAleatorio()];
+    let productosRandom = Array.from({ length: 6 }, () => ProductoAleatorio());
 
     return (
-        <>
-            <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-200"
-                        src={productosRandom[0].images[0]}
-                        height="400px"
-                    />
-                    <Carousel.Caption>
-                        <h3>{productosRandom[0].title}</h3>
-                        <p>{productosRandom[0].description}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-200"
-                        src={productosRandom[1].images[0]}
-                        alt="Second"
-                        height="400px"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>{productosRandom[1].title}</h3>
-                        <p>{productosRandom[1].description}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-200"
-                        src={productosRandom[2].images[0]}
-                        alt="Third"
-                        height="400px"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>{productosRandom[2].title}</h3>
-                        <p>{productosRandom[2].description}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-
+        <Container>
+            <Carousel className="my-5">
+                {productosRandom.map((producto, index) => (
+                    <Carousel.Item key={index}>
+                        <img
+                            style={{ width: "100%", height:"450px" }}
+                            src={producto.images[0]}
+                            alt={`Slide ${index}`}
+                        />
+                        <Carousel.Caption>
+                            <h3 className="text-warning">{producto.title}</h3>
+                            <p className="text-warning">{producto.description}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                ))}
             </Carousel>
-            <br/>
-            <br/>
-            {productos.slice(0,5).map((producto) => (
-                <Card>
-                    <div className="card row" style={{width: "18rem"}}>
-                        <img src={producto.images} className="card-img-top">
-                        </img>
-                        <div className="card-body">
-                            <h5 className="card-title">{producto.title}</h5>
-                            <p className="card-text">{producto.description}</p>
-                            <a href="#" className="btn btn-primary">Comprar</a>
-                        </div>
-                        
-                    </div>
-                </Card>
-            ))}
-        </>
+            <br />
+            <br />
+            <Row className="mb-5">
+                {productos.slice(0, 6).map((producto, index) => (
+                    <Col key={index} md={4} className="mb-4">
+                        <Card>
+                            <img src={producto.images[0]} className="card-img-top" style={{ width: "100%", height:"150px" }} alt={producto.title} />
+                            <Card.Body>
+                                <h5 className="card-title">{producto.title}</h5>
+                                <p className="card-text">{producto.description}</p>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+
+        </Container>
     );
 
 
