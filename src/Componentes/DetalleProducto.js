@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./DetalleProducto.css";
+import Carousel from 'react-bootstrap/Carousel';
 
 const ProductoDetalle = () => {
   const { id } = useParams();
@@ -21,15 +22,40 @@ const ProductoDetalle = () => {
     return <div>Cargando...</div>;
   }
 
+
   return (
-<div className="product-detail">
-  <h2>Detalle del producto</h2>
-  <div className="product-info">
-    <h5 className="product-title">{producto.title}</h5>
-    <p className="product-description">{producto.description}</p>
-  </div>
-  <img src={producto.images[0]} className="product-image" alt={producto.title}/>
-</div>
+    <div className="product-detail">
+      <h2 className="product-title">{producto.title}</h2>
+      <div className="product-info">
+        <p className="product-description">{producto.description}</p>
+        <p className="product-price">Precio: ${producto.price}</p>
+      </div>
+      <Carousel className="carrousel">
+        <Carousel.Item>
+          <img
+            style={{ width: "100%", height: "250px" }}
+            src={producto.images[0]}
+            alt={`Slide 1`}
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            style={{ width: "100%", height: "250px" }}
+            src={producto.images[1]}
+            alt={`Slide 2`}
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            style={{ width: "100%", height: "250px" }}
+            src={producto.images[2]}
+            alt={`Slide 3`}
+          />
+        </Carousel.Item>
+      </Carousel>
+      <button className="detail-button" >Comprar Ahora</button>
+      <button className="detail-button2" >Agregar al carrito</button>
+    </div>
   );
 };
 

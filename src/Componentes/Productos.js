@@ -58,6 +58,8 @@ function Productos() {
                 {productos.map(producto => (
                     <li key={producto.id} className="product-item">
                         <b className="product-title">{producto.title}</b>
+                        <img src={producto.images[0]} className="product-image"></img>
+                        <p className="product-rating">Rating: {producto.rating}</p>
                         <button className="detail-button" onClick={() => fetchProductoInfo(producto.id)}>
                             Ver Detalle
                         </button>
