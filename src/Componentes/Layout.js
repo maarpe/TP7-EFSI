@@ -13,7 +13,7 @@ function Layout() {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/Productos">Productos</Nav.Link>
                         <Nav.Link as={Link} to="/Contacto">Contacto de ayuda</Nav.Link>
                     </Nav>
