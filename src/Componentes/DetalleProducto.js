@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./DetalleProducto.css";
 import Carousel from 'react-bootstrap/Carousel';
+import { Card } from 'react-bootstrap';
 
 const ProductoDetalle = () => {
   const { id } = useParams();
@@ -25,11 +26,6 @@ const ProductoDetalle = () => {
 
   return (
     <div className="product-detail">
-      <h2 className="product-title">{producto.title}</h2>
-      <div className="product-info">
-        <p className="product-description">{producto.description}</p>
-        <p className="product-price">Precio: ${producto.price}</p>
-      </div>
       <Carousel className="carrousel">
         <Carousel.Item>
           <img
@@ -53,8 +49,16 @@ const ProductoDetalle = () => {
           />
         </Carousel.Item>
       </Carousel>
-      <button className="detail-button" >Comprar Ahora</button>
-      <button className="detail-button2" >Agregar al carrito</button>
+      <Card className='cardPrecio'>
+        <div className="product-info">
+          <h1 className="product-title">{producto.title}</h1>
+          <h3 className="product-description">{producto.description}</h3>
+          <h3 className="product-price">${producto.price}</h3>
+        </div>
+        <button className="detail-button" >Comprar Ahora</button>
+        <button className="detail-button2" >Agregar al carrito</button>
+      </Card>
+
     </div>
   );
 };
