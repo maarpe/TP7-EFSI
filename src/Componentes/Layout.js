@@ -1,6 +1,8 @@
+import "./Layout.css";
 import { Button, Container, Form, Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from "react-router-dom";
+
 
 function Layout() {
     return (
@@ -16,6 +18,7 @@ function Layout() {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/Productos">Productos</Nav.Link>
                         <Nav.Link as={Link} to="/Contacto">Contacto de ayuda</Nav.Link>
+                        <Nav.Link as={Link} to="/Carrito" id="carritoDeCompra">Carrito</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

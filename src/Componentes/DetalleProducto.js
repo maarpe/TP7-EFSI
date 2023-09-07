@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import "./DetalleProducto.css";
 import Carousel from 'react-bootstrap/Carousel';
-import { Card } from 'react-bootstrap';
+import { Card, Nav } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const ProductoDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
@@ -22,6 +24,18 @@ const ProductoDetalle = () => {
   if (!producto) {
     return <div>Cargando...</div>;
   }
+
+  const fetchProductoInfo = (id) => {
+    axios.get(`https://dummyjson.com/products/${id}`)
+        .then(response => {
+            console.log(response.data);
+            navigate(`/Carrito/producto/${id}`);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+        
+};
 
 
   return (
@@ -56,7 +70,9 @@ const ProductoDetalle = () => {
           <h3 className="product-price">${producto.price}</h3>
         </div>
         <button className="detail-button" >Comprar Ahora</button>
-        <button className="detail-button2" >Agregar al carrito</button>
+        <button className="detail-button2" onClick={() => fetchProductoInfo(producto.id)}>
+          Agregar al Carrito
+        </button>
       </Card>
 
     </div>
