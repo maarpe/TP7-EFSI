@@ -29,7 +29,7 @@ const ProductoDetalle = () => {
     axios.get(`https://dummyjson.com/products/${id}`)
         .then(response => {
             console.log(response.data);
-            navigate(`/Carrito/producto/${id}`);
+            navigate(`/producto/${id}`);
         })
         .catch(error => {
             console.error(error);
