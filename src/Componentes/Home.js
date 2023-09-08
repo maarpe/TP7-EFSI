@@ -16,7 +16,7 @@ function Home() {
             });
     }, []);
 
-    if (productos.length == 0) return (<></>);
+    if (productos.length === 0) return (<></>);
 
     function ProductoAleatorio() {
         let rand = Math.floor(Math.random() * productos.length);

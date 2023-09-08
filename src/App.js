@@ -5,6 +5,7 @@ import DetalleProducto from "./Componentes/DetalleProducto";
 import Productos from "./Componentes/Productos";
 import Contacto from "./Componentes/Contacto";
 import Carrito from "./Componentes/Carrito";
+import CarritoContext from "./context/CarritoContext";
 
 const App = () => {
   return (
@@ -16,7 +17,9 @@ const App = () => {
           <Route path="/Productos" element={<Productos />}></Route>
           <Route path="/Producto/:id" element={<DetalleProducto />}></Route>
           <Route path="/Contacto" element={<Contacto/>}></Route>
-          <Route path="/Carrito" element={<Carrito/>}></Route>
+          <CarritoContext>
+            <Route path="/Carrito" element={<Carrito/>}></Route>
+          </CarritoContext>
         </Routes>
       </BrowserRouter>
     </>

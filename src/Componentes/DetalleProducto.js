@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./DetalleProducto.css";
 import Carousel from 'react-bootstrap/Carousel';
-import { Card, Nav } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const ProductoDetalle = () => {
@@ -29,7 +29,7 @@ const ProductoDetalle = () => {
     axios.get(`https://dummyjson.com/products/${id}`)
         .then(response => {
             console.log(response.data);
-            navigate(`/producto/${id}`);
+            navigate(`/Carrito`);
         })
         .catch(error => {
             console.error(error);
@@ -74,7 +74,6 @@ const ProductoDetalle = () => {
           Agregar al Carrito
         </button>
       </Card>
-
     </div>
   );
 };
