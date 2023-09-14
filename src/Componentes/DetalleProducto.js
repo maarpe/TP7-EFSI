@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "./DetalleProducto.css";
 import Carousel from 'react-bootstrap/Carousel';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import CarritoContext from '../context/CarritoContext';
+import { useContext } from 'react';
 
 const ProductoDetalle = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const navigate = useNavigate();
+  const context = useContext(CarritoContext);
 
   useEffect(() => {
     axios.get(`https://dummyjson.com/products/${id}`)
@@ -21,21 +24,18 @@ const ProductoDetalle = () => {
       });
   }, [id]);
 
-  if (!producto) {
+  console.log("AAAAAAAAA", producto);
+
+  if (producto === null) {
     return <div>Cargando...</div>;
   }
 
-  const fetchProductoInfo = (id) => {
-    axios.get(`https://dummyjson.com/products/${id}`)
-        .then(response => {
-            console.log(response.data);
-            navigate(`/Carrito`);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-        
-};
+  const agregarAlCarrito = ()=>{
+
+    context.setListCarrito([...context.listCarrito, producto])
+    navigate(`/Carrito`);
+
+  }
 
 
   return (
@@ -70,7 +70,7 @@ const ProductoDetalle = () => {
           <h3 className="product-price">${producto.price}</h3>
         </div>
         <button className="detail-button" >Comprar Ahora</button>
-        <button className="detail-button2" onClick={() => fetchProductoInfo(producto.id)}>
+        <button className="detail-button2" onClick={() => agregarAlCarrito(producto.id)}>
           Agregar al Carrito
         </button>
       </Card>
