@@ -24,8 +24,6 @@ const ProductoDetalle = () => {
       });
   }, [id]);
 
-  console.log("AAAAAAAAA", producto);
-
   if (producto === null) {
     return <div>Cargando...</div>;
   }

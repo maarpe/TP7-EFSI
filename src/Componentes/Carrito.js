@@ -6,7 +6,6 @@ import CarritoContext from "../context/CarritoContext";
 
 function Carrito() {
   const { listCarrito, setListCarrito } = useContext(CarritoContext);
-  const [producto, setProducto] = useState(null);
 
   console.log("Carrito", listCarrito);
 

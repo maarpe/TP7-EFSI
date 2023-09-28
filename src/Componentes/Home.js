@@ -6,7 +6,6 @@ import React, { useState, useEffect } from 'react';
 
 function Home() {
     const [productos, setProductos] = useState([]);
-    const [randomProducto, setRandomProductos] = useState({});
 
     useEffect(() => {
         axios.get('https://dummyjson.com/products/search?q=')
