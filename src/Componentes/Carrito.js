@@ -7,13 +7,14 @@ import CarritoContext from "../context/CarritoContext";
 function Carrito() {
   const { listCarrito, setListCarrito } = useContext(CarritoContext);
 
-  console.log("Carrito", listCarrito);
-
+  
   const eliminarProducto = (productoId) => {
     setListCarrito(
-      listCarrito.filter((producto) => producto.id !== productoId)
+      listCarrito.filter((producto) => producto.id !== productoId),
     ); //filtra la lista para que aparezcan todos los productos que tengan un id distinto al que se le pasa
   };
+  
+  
 
   return (
     <>

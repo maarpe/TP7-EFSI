@@ -11,6 +11,18 @@ import Checkout from "./Componentes/Checkout";
 
 const App = () => {
   const [listCarrito, setListCarrito] = useState([]);
+  
+  useEffect(() => {
+      localStorage.setItem("carrito", JSON.stringify(listCarrito));
+  },[listCarrito]);
+
+  useEffect(() => {
+    let cart = localStorage.getItem("carrito");
+
+    if (cart) {
+      setListCarrito(JSON.parse(cart));
+    }
+  },[]);
 
   return (
     <>
